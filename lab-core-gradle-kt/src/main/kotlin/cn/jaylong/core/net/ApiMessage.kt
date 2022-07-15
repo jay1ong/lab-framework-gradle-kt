@@ -1,4 +1,4 @@
-package cn.jaylong.core.validation
+package cn.jaylong.core.net
 
 import java.time.LocalDateTime
 
@@ -10,7 +10,7 @@ import java.time.LocalDateTime
  * Url: <a href="https://jaylong.cn">https://jaylong.cn</a>
  */
 data class ApiMessage(
-    var code: String,
+    var code: String? = null,
     var timestamp: LocalDateTime? = LocalDateTime.now(),
     var message: String? = null,
     var data: Any? = null,
