@@ -1,7 +1,7 @@
 package cn.jaylong.web.controller
 
 import cn.jaylong.core.exception.BizException
-import cn.jaylong.core.validation.ApiMessage
+import cn.jaylong.core.net.ApiMessage
 import cn.jaylong.web.OriginResponse
 import com.fasterxml.jackson.databind.ObjectMapper
 import lombok.SneakyThrows
@@ -144,6 +144,7 @@ class RestControllerAdvice(
             timestamp = LocalDateTime.now(),
             data = body ?: "成功"
         )
+        response.headers["Content-Type"] = "application/json;charset=utf-8"
         return if (body is String) objectMapper.writeValueAsString(message) else message
     }
 
