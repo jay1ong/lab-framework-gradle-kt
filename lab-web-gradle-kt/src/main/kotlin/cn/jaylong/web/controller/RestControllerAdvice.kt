@@ -15,6 +15,7 @@ import org.springframework.http.converter.HttpMessageConverter
 import org.springframework.http.server.ServerHttpRequest
 import org.springframework.http.server.ServerHttpResponse
 import org.springframework.util.AntPathMatcher
+import org.springframework.util.ObjectUtils
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -142,9 +143,12 @@ class RestControllerAdvice(
         val message = ApiMessage(
             code = "200",
             timestamp = LocalDateTime.now(),
-            data = body ?: "成功"
+            data = body ?: "OK"
         )
         response.headers["Content-Type"] = "application/json;charset=utf-8"
+        if (ObjectUtils.isEmpty(body)) {
+            return null
+        }
         return if (body is String) objectMapper.writeValueAsString(message) else message
     }
 
