@@ -146,10 +146,7 @@ class RestControllerAdvice(
             data = body ?: "OK"
         )
         response.headers["Content-Type"] = "application/json;charset=utf-8"
-        if (ObjectUtils.isEmpty(body)) {
-            return null
-        }
-        return if (body is String) objectMapper.writeValueAsString(message) else message
+        return message
     }
 
     private fun filter(returnType: MethodParameter): Boolean {
