@@ -1,6 +1,6 @@
 dependencies {
-    implementation(platform("cn.jaylong:lab-dependencies-gradle-kt:$version"))
-    annotationProcessor(platform("cn.jaylong:lab-dependencies-gradle-kt:$version"))
+    implementation(platform("cn.jaylong:lab-dependencies-gradle-kt:${properties["version"]}"))
+    annotationProcessor(platform("cn.jaylong:lab-dependencies-gradle-kt:${properties["version"]}"))
     api("com.querydsl:querydsl-apt")
     annotationProcessor("com.querydsl:querydsl-apt::jpa")
     api("org.hibernate.javax.persistence:hibernate-jpa-2.1-api")

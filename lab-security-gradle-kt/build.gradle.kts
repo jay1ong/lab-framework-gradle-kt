@@ -1,6 +1,6 @@
 dependencies {
-    implementation(platform("cn.jaylong:lab-dependencies-gradle-kt:$version"))
-    annotationProcessor(platform("cn.jaylong:lab-dependencies-gradle-kt:$version"))
+    implementation(platform("cn.jaylong:lab-dependencies-gradle-kt:${properties["version"]}"))
+    annotationProcessor(platform("cn.jaylong:lab-dependencies-gradle-kt:${properties["version"]}"))
     implementation("cn.jaylong:lab-core-gradle-kt")
     api("org.springframework.boot:spring-boot-starter-security")
     api("org.springframework.security:spring-security-oauth2-resource-server")

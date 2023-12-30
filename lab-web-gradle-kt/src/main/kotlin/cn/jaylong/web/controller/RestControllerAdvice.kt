@@ -15,7 +15,6 @@ import org.springframework.http.converter.HttpMessageConverter
 import org.springframework.http.server.ServerHttpRequest
 import org.springframework.http.server.ServerHttpResponse
 import org.springframework.util.AntPathMatcher
-import org.springframework.util.ObjectUtils
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -49,7 +48,6 @@ class RestControllerAdvice(
         return ResponseEntity.ok(
             ApiMessage(
                 code = ex.code,
-                timestamp = LocalDateTime.now(),
                 message = ex.message,
                 description = request.getDescription(false)
             )
@@ -64,7 +62,6 @@ class RestControllerAdvice(
         return ResponseEntity.ok(
             ApiMessage(
                 code = "11000",
-                timestamp = LocalDateTime.now(),
                 message = ex.message,
                 description = request.getDescription(false)
             )
@@ -92,7 +89,6 @@ class RestControllerAdvice(
         return ResponseEntity.ok(
             ApiMessage(
                 code = "11001",
-                timestamp = LocalDateTime.now(),
                 message = stringBuilder.toString(),
                 description = request.getDescription(false)
             )
@@ -106,7 +102,6 @@ class RestControllerAdvice(
         return ResponseEntity.ok(
             ApiMessage(
                 code = "11002",
-                timestamp = LocalDateTime.now(),
                 message = "指定的聚合不存在:" + ex.message,
                 description = request.getDescription(false)
             )
@@ -140,10 +135,12 @@ class RestControllerAdvice(
         if (body is ApiMessage) {
             return body
         }
+        if (body == null){
+            return null
+        }
         val message = ApiMessage(
             code = "200",
-            timestamp = LocalDateTime.now(),
-            data = body ?: "OK"
+            data = body
         )
         response.headers["Content-Type"] = "application/json;charset=utf-8"
         return message

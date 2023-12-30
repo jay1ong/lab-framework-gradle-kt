@@ -38,7 +38,7 @@ class Snowflake(private var snowflake: Snowflake) {
         return snowflake.nextId()
     }
 
-    fun nextIdStr(): String? {
+    fun nextIdStr(): String {
         return snowflake.nextIdStr()
     }
 }

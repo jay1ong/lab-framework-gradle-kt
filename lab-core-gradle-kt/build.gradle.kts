@@ -1,9 +1,17 @@
+plugins {
+    kotlin("jvm") version "1.8.21"
+    kotlin("plugin.spring") version "1.8.21"
+
+    kotlin("plugin.serialization") version "1.8.21"
+    id("idea")
+}
+
 dependencies {
-    implementation(platform("cn.jaylong:lab-dependencies-gradle-kt:$version"))
-    annotationProcessor(platform("cn.jaylong:lab-dependencies-gradle-kt:$version"))
-    implementation(platform("org.springframework.boot:spring-boot-starter-parent:${properties["springbootVersion"]}"))
-    implementation(platform("org.springframework.cloud:spring-cloud-dependencies:${properties["springcloutVersion"]}"))
-    implementation(platform("org.springframework.boot:spring-boot-dependencies:${properties["springbootVersion"]}"))
+    implementation(platform("cn.jaylong:lab-dependencies-gradle-kt:${properties["version"]}"))
+    annotationProcessor(platform("cn.jaylong:lab-dependencies-gradle-kt:${properties["version"]}"))
+    implementation(platform("org.springframework.boot:spring-boot-starter-parent:${properties["springboot-version"]}"))
+    implementation(platform("org.springframework.cloud:spring-cloud-dependencies:${properties["springcloud-version"]}"))
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:${properties["springboot-version"]}"))
     api("org.jetbrains.kotlin:kotlin-reflect")
     api("cn.hutool:hutool-all")
     api("org.projectlombok:lombok")
@@ -27,4 +35,6 @@ dependencies {
     api("junit:junit")
     api("org.junit.jupiter:junit-jupiter-api")
     api("org.junit.jupiter:junit-jupiter-engine")
+    api("org.jetbrains.kotlinx:kotlinx-datetime")
+    api("org.jetbrains.kotlinx:kotlinx-serialization-json")
 }
